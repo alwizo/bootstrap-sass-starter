@@ -36,14 +36,7 @@ gulp.task('browserSync', function() {
 
 gulp.task('sass', function() {
   return gulp.src('app/scss/**/*.scss') // Gets all files ending with .scss in app/scss and children dirs
-      .pipe(plumber({ // plumber - плагин для отловли ошибок.
-        errorHandler: notify.onError(function(err) { // nofity - представление ошибок в удобном для вас виде.
-          return {
-            title: 'Styles',
-            message: err.message
-          }
-        })
-      }))
+      .pipe(plumber())
       .pipe(sourcemaps.init()) //История изменения стилей, которая помогает нам при отладке в devTools.
       .pipe(sass()) // Passes it through a gulp-sass
       .pipe(sourcemaps.write())
